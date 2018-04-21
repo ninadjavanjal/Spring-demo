@@ -63,5 +63,15 @@ public class PersonDAOImpl implements PersonDAO {
 		}
 		logger.info("Person deleted successfully, person details="+p);
 	}
+	
+
+	public void removePerson(String name) {
+		Session session = this.sessionFactory.getCurrentSession();
+		Person p = (Person) session.load(Person.class, name);
+		if(null != p){
+			session.delete(p);
+		}
+		logger.info("Person deleted successfully, person details="+p);
+	}
 
 }
